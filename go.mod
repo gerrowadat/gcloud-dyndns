@@ -1,4 +1,4 @@
-module gcloud-dyndns
+module gcloud_dyndns
 
 go 1.21.3
 

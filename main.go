@@ -1,4 +1,4 @@
-package main
+package gcloud_dyndns
 
 import (
 	"context"
