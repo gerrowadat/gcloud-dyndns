@@ -2,11 +2,11 @@
 
 set -e
 
-GCLOUD_DNS_INTERVAL_SECS=86400
+CLOUD_DNS_INTERVAL_SECS=86400
 
 GCLOUD_PROJECT=myproject
 GCLOUD_DNS_ZONE=myzone
-GLOUD_DNS_RECORD_NAME=myname.mydomain.tld.
+GCLOUD_DNS_RECORD_NAME=myname.mydomain.tld.
 JSON_KEYFILE=/secrets/cloud-dns.key.json
 
 
