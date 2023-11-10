@@ -1,4 +1,4 @@
-module gcloud_dyndns
+module github.com/gerrowadat/gcloud-dyndns
 
 go 1.21.3
 
