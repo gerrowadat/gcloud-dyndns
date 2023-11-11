@@ -91,9 +91,6 @@ func main() {
 	flag.Parse()
 
 	// These are required in all cases
-	if *cloudProject == "" {
-		log.Fatal("--cloud-project is required")
-	}
 	if *cloudZone == "" {
 		log.Fatal("--cloud-dns-zone is required")
 	}
@@ -113,6 +110,15 @@ func main() {
 		creds, _ = google_oauth.CredentialsFromJSON(ctx, jsonData, "https://www.googleapis.com/auth/cloud-platform")
 	} else {
 		creds, _ = google_oauth.FindDefaultCredentials(ctx)
+	}
+
+	// Get project from json keyfile if present.
+	if creds.ProjectID != "" {
+		*cloudProject = creds.ProjectID
+	}
+
+	if *cloudProject == "" {
+		log.Fatal("--cloud-project is required")
 	}
 
 	dnsservice, err := dns.NewService(ctx, option.WithCredentials(creds))
