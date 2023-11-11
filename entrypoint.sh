@@ -2,19 +2,13 @@
 
 set -e
 
-CLOUD_DNS_INTERVAL_SECS=86400
-
-GCLOUD_PROJECT=myproject
-GCLOUD_DNS_ZONE=myzone
-GCLOUD_DNS_RECORD_NAME=myname.mydomain.tld.
-JSON_KEYFILE=/secrets/cloud-dns.key.json
-
-
 while true
 do
-  gcloud-dyndns --cloud-project=$GCLOUD_PROJECT \
+  echo "Updating $GCLOUD_DNS_RECORD_NAME in gcloud zone $GCLOUD_DNS_ZONE"
+  gcloud-dyndns \
     --cloud-dns-zone=$GCLOUD_DNS_ZONE \
     --cloud-dns-record-name=$GCLOUD_DNS_RECORD_NAME \
     --json-keyfile=$JSON_KEYFILE
-  sleep $CLOUD_DNS_INTERVAL_SECS
+  echo "Sleeping for $GCLOUD_DNS_INTERVAL_SECS seconds..."
+  sleep $GCLOUD_DNS_INTERVAL_SECS
 done
